@@ -1,0 +1,9 @@
+thesis/*.aux
+thesis/*.bbl
+thesis/*.blg
+thesis/*.fls
+thesis/*.log
+thesis/*.synctex.gz
+thesis/*.fdb_latexmk
+thesis/.vscode
+thesis/.DS_Store
