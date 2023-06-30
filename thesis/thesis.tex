@@ -8,6 +8,8 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage[german]{babel}
+\usepackage{rotating}
+\usepackage{multirow}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
 T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -15,7 +17,7 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \bibliographystyle{IEEEtran}
 \graphicspath{imgs}
-
+\raggedbottom
 \title{Erkennung von Design Patterns durch Maschine Learning}
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Mehmet Aslan}
@@ -147,7 +149,7 @@ Im Kontext der Design Pattern Erkennung können folgende Schritte von Bedeutung 
     \item \textbf{Data Formatting}: Die Daten im Datenset werden in eine Form transformiert, mit denen das Machine Learning Modell umgehen kann. Unteranderm könnnen die Dateien in Vektoren, Matrizen oder in andere Datenstrukturen umgewandelt werden.
 \end{itemize}
 
-
+\newpage
 
 \subsection{Feature Extraction}
 
@@ -167,20 +169,22 @@ Aus diesem Grund existieren keine definitiven Merkmale für diese Problemstellun
 
 Bei der Erkennung von Design Patterns handelt es sich um ein Klassifizierungsproblem. Bei der Eingabe der Eingangsparameter werden durch das Machine Learning Modell mögliche Klassen mit gewissen Wahrscheinlichkeiten zuzuordnen.
 Da das Resultat der Berechnung des Modells relevant ist und einer Eingabe eine oder mehrere Klassen zugeordnet werden können, kann man die Menge der möglichen Modelle auf die eingrenzen, die zum Bereich des Supervised Learnings zugeordnet werden können.
-Bei Supervised Learning versucht das Machine Learning Modell eine Funktion zu approximieren, die die Eingabeparameter auf eine oder mehrere Klassen abbildet. Dies dient auch zur Klassifizierung von neuen und unbekannten Daten. 
+Bei Supervised Learning versucht das Machine Learning Modell eine Funktion zu approximieren, die die Eingabeparameter auf eine oder mehrere Klassen abbildet. Dies dient auch zur Klassifizierung von neuen und unbekannten Daten.
 Je nach Dataset können folgende Auswahl an Modelle verwendet werden:
 
 \begin{itemize}
-    \item \textbf{Random Forest}: Random Forest Modelle ist ein sogenanntes Ensemble-Modell, was intern aus mehreren Decision Trees besteht, deren Ausgabe zu einem Resultat zusammengefasst wird. Decicision Trees verwenden angelernte Entscheidungsregeln, um der Eingabe mehrere Klassen zuzuordnen.
+    \item \textbf{Random Forest}: Random Forest Modelle ist ein sogenanntes Ensemble-Modell, die intern aus mehreren Decision Trees besteht, deren Ausgabe zu einem Resultat zusammengefasst wird. Decicision Trees verwenden angelernte Entscheidungsregeln, um der Eingabe mehrere Klassen zuzuordnen.
     \item \textbf{Support Vector Machine}: Support Vector Machines versuchen, zwischen den Eingaben eine oder mehrere Trennflächen (auch Hyperplanes genannt) zu definieren, die die Klassen von einandner trennen.
-    \item \textbf{Neuronal Networks}: Neuronal Networks wie Convolutional Neural Networks (CNNs) oder Recurrent Neural Networks (RNNs) eignen sich als effektive Modelle bei der Erkennung von Design Patterns im Quellcode. CNNs sind passend, um visuelle Muster in Quellcode zu erkennen, während RNNs die Sequenzstruktur von Quellcode analysieren können. 
+    \item \textbf{Neuronal Networks}: Neuronal Networks wie Convolutional Neural Networks (CNNs) oder Recurrent Neural Networks (RNNs) eignen sich als effektive Modelle bei der Erkennung von Design Patterns im Quellcode. CNNs sind passend, um visuelle Muster in Quellcode zu erkennen, während RNNs die Sequenzstruktur von Quellcode analysieren können.
     \item \textbf{Multiclass Logistic Regression}: Bei Multiclass Logistic Regression wird für jede Design Pattern-Klasse eine separate binäre logistische Regression durchgeführt. Die Wahrscheinlichkeiten der einzelnen Klassen werden berechnet und das Modell trifft eine Entscheidung, indem es die Klasse mit der höchsten Wahrscheinlichkeit auswählt.
     \item \textbf{Naive Bayes}: Naive Bayes ist ein probabilistisches Modell, das auf dem Bayes-Theorem basiert. Es kann für die Klassifikation mit mehreren Klassen verwendet werden, indem es die Wahrscheinlichkeiten der einzelnen Design Pattern-Klassen basierend auf den Merkmalen berechnet.
 \end{itemize}
 
+\newpage
+
 \subsection{Model Training}
 
-Nach der Auswahl des Modells kann die eigentliche Trainingsphase des Machine Learning Modells gestartet werden. 
+Nach der Auswahl des Modells kann die eigentliche Trainingsphase des Machine Learning Modells gestartet werden.
 Zuerst muss das Modell initalisiert werden. Je nach Modell können bei der Initailsierung zusätzliche Parameter erforderlich, die die Struktur oder das Verhalten des Modells beeinflussen. Diese Parameter werden auch Hyperparameter gennant und werden von dem Anwender unabhangig von dem Dataset festgelegt.
 Nachdem das Dataset sich in einer Form befindet, mit der das Modell umgehen kann, wird das Dataset in zwei gespalten: in ein Training Dataset und ein Validation Traning Dataset.
 Das Training Dataset wird verwendet, um das Modell trainieren, während das Validation bei der Evaluation des Modells verwendet wird. Die Aufteilung verläuft im Schnitt so ab, dass ungefähr mehr als die Hälfte der Einträge im Dataset dem Training Dataset und der Rest den Validation Dataset zugeordnet wird.
@@ -188,18 +192,18 @@ Das Dauer des Trainings hängt von dem Umfang des Dataset, der Rechenleistung de
 
 \subsection{Model Evaluation}
 
-Nach dem das Training des Modells abgeschlossen wurde, steht die Evaluation des Modells an. 
+Nach dem das Training des Modells abgeschlossen wurde, steht die Evaluation des Modells an.
 Dazu wird das das Validation Dataset dem Modell zur Klasszifizierung übergeben und betrachet, wie die Ergebnisse der Berechnung des Machine Learning Modells von den eigentlichen Klasszifizierung abweichen.
 Um diese Abweichung zu qunatifizieren, können folgende Auswahl an Metriken verwendet werden:
 
 \begin{itemize}
     \item \textbf{Accuracy}: Die Genauigkeit ist ein Maß zwischen 0 und 1 und gibt an, wie gut das Modell insgesamt in der Lage ist, korrekte Vorhersagen zu treffen. Sie gibt den Anteil der korrekten Vorhersagen zur Gesamtzahl der Vorhersagen an. Je näher das Ergbenis bei 1, desto besser die Vorhersage der Klassen.
-    \item \textbf{Precision \& Recall}: Präzision und Recall sind Metriken, die insbesondere für unbalancierte Klassenverteilungen relevant sind. Die Präzision gibt den Anteil der korrekt als positiv vorhergesagten Instanzen zur Gesamtzahl der als positiv vorhergesagten Instanzen an. Der Recall (auch Sensitivität genannt) gibt den Anteil der korrekt als positiv vorhergesagten Instanzen zur Gesamtzahl der tatsächlich positiven Instanzen an. 
-    Ein hoher Präzisionswert zeigt an, dass das Modell in der Lage ist, die relevanten Muster genau zu erkennen. Ein hoher Recall zeigt an, dass das Modell in der Lage ist, die meisten tatsächlich positiven Instanzen zu erfassen. 
+    \item \textbf{Precision \& Recall}: Präzision und Recall sind Metriken, die insbesondere für unbalancierte Klassenverteilungen relevant sind. Die Präzision gibt den Anteil der korrekt als positiv vorhergesagten Instanzen zur Gesamtzahl der als positiv vorhergesagten Instanzen an. Der Recall (auch Sensitivität genannt) gibt den Anteil der korrekt als positiv vorhergesagten Instanzen zur Gesamtzahl der tatsächlich positiven Instanzen an.
+          Ein hoher Präzisionswert zeigt an, dass das Modell in der Lage ist, die relevanten Muster genau zu erkennen. Ein hoher Recall zeigt an, dass das Modell in der Lage ist, die meisten tatsächlich positiven Instanzen zu erfassen.
     \item \textbf{F1-Score}: Der F1-Score ist eine kombinierte Metrik, die Präzision und Recall berücksichtigt. Er gibt das harmonische Mittel zwischen Präzision und Recall an. Ein hoher F1-Score zeigt an, dass das Modell sowohl eine hohe Präzision als auch einen hohen Recall aufweist.
     \item \textbf{Confusion Matrix}: Die Konfusionsmatrix ist eine Tabelle, die die Anzahl der richtigen und falschen Vorhersagen für jede Klasse darstellt. Sie gibt detaillierte Informationen über die Leistung des Modells für jede Klasse und ermöglicht das Berechnen von verschiedenen Metriken wie Genauigkeit, Präzision und Recall für jede Klasse.
-    \item \textbf{ROC-Kurve \& AUC}: Die ROC-Kurve (Receiver Operating Characteristic) und der AUC-Wert (Area Under the Curve) sind Metriken, die die Leistung eines Modells bei der Klassifikation von Daten über verschiedene Schwellenwerte hinweg bewerten. Sie sind insbesondere relevant, wenn die Trade-offs zwischen True Positive Rate (TPF; auch Recall gennant) und False Positive Rate (FPR) betrachtet werden sollen. 
-    Eine perfekte Klassifikation würde zu einer ROC-Kurve führen, die den Punkt (0,1) erreicht, was bedeutet, dass die TPR 100\% und die FPR 0\% beträgt. Ein zufälliges Klassifikationsmodell würde eine ROC-Kurve erzeugen, die der diagonalen Linie entspricht. Der AUC-Wert gibt den Bereich unter der ROC-Kurve an und dient als Zusammenfassung der gesamten Leistung des Modells. Ein AUC-Wert von 1 bedeutet, dass das Modell eine perfekte Trennung zwischen den Klassen erreicht, während ein AUC-Wert von 0,5 darauf hinweist, dass das Modell nicht besser ist als eine zufällige Klassifikation.
+    \item \textbf{ROC-Kurve \& AUC}: Die ROC-Kurve (Receiver Operating Characteristic) und der AUC-Wert (Area Under the Curve) sind Metriken, die die Leistung eines Modells bei der Klassifikation von Daten über verschiedene Schwellenwerte hinweg bewerten. Sie sind insbesondere relevant, wenn die Trade-offs zwischen True Positive Rate (TPF; auch Recall gennant) und False Positive Rate (FPR) betrachtet werden sollen.
+          Eine perfekte Klassifikation würde zu einer ROC-Kurve führen, die den Punkt (0,1) erreicht, was bedeutet, dass die TPR 100\% und die FPR 0\% beträgt. Ein zufälliges Klassifikationsmodell würde eine ROC-Kurve erzeugen, die der diagonalen Linie entspricht. Der AUC-Wert gibt den Bereich unter der ROC-Kurve an und dient als Zusammenfassung der gesamten Leistung des Modells. Ein AUC-Wert von 1 bedeutet, dass das Modell eine perfekte Trennung zwischen den Klassen erreicht, während ein AUC-Wert von 0,5 darauf hinweist, dass das Modell nicht besser ist als eine zufällige Klassifikation.
 \end{itemize}
 
 \newpage
@@ -213,12 +217,12 @@ Im Allgemeinem kann das Hyperparameter-Tuning in folgende Schritte untergliedert
     \item \textbf{Auswahl Hyperparameter}: Die Auswahl der betrachtenden Hyperparameter ist abhängig von dem jeweiligen Machine Learning Modell.
     \item \textbf{Definition des Suchraums}: Den ausgewählten Hyperparameter wird entweder ein Wertebereich oder ein diskrete Werte zugeordnet.
     \item \textbf{Auswahl der Tuning-Methode}: Folgende Tuning-Methoden werden am häufigsten verwendet
-        \begin{itemize}
-            \item Random Search: Random Search probiert verschiedene Kombinationen von Hyperparametern aus, wobei jeder Hyperparameter aus einem vordefinierten Wertebereich oder einer Verteilung gezogen wird. Diese Methode hilfreich, um den Suchraum einzugrenzen und mit Grid Search die optimale Parameterkombination zu determinieren.
-            \item Grid Search: Grid Search sucht nach allen mölglichen Kombination der Hyperparameter traniert und evaliuiert. Diese kann nach der Menge der möglichen Operationen recheninteniv und dementsprechend lang dauern. Zuerst sollte ein Random Search durchgeführt werden, um den Suchraum zu verkleinern.
-            \item ayesian Optimization: Bayesian Optimization verwendet eine probabilistische Modellierung des Zusammenhangs zwischen den Hyperparametern und der Leistung des Modells, um die besten Hyperparameter zu finden. Es basiert auf dem Konzept des Bayes-Theorems und verwendet eine Akquisitionsfunktion, um die effizienteste Kombination von Hyperparametern auszuwählen.
-            \item Genetic Algorithm: Genetische Algorithmen sind von der natürlichen Evolution inspirierte Optimierungstechniken. Dabei wird eine Population von Hyperparameter-Kombinationen erstellt, und durch Crossover und Mutation werden neue Generationen von Kombinationen erzeugt. Die Auswahl erfolgt aufgrund der Leistung der Modelle auf der Grundlage von Fitnessfunktionen.
-        \end{itemize}
+          \begin{itemize}
+              \item Random Search: Random Search probiert verschiedene Kombinationen von Hyperparametern aus, wobei jeder Hyperparameter aus einem vordefinierten Wertebereich oder einer Verteilung gezogen wird. Diese Methode hilfreich, um den Suchraum einzugrenzen und mit Grid Search die optimale Parameterkombination zu determinieren.
+              \item Grid Search: Grid Search sucht nach allen mölglichen Kombination der Hyperparameter traniert und evaliuiert. Diese kann nach der Menge der möglichen Operationen recheninteniv und dementsprechend lang dauern. Zuerst sollte ein Random Search durchgeführt werden, um den Suchraum zu verkleinern.
+              \item Bayesian Optimization: Bayesian Optimization verwendet eine probabilistische Modellierung des Zusammenhangs zwischen den Hyperparametern und der Leistung des Modells, um die besten Hyperparameter zu finden. Es basiert auf dem Konzept des Bayes-Theorems und verwendet eine Akquisitionsfunktion, um die effizienteste Kombination von Hyperparametern auszuwählen.
+              \item Genetic Algorithm: Genetische Algorithmen sind von der natürlichen Evolution inspirierte Optimierungstechniken. Dabei wird eine Population von Hyperparameter-Kombinationen erstellt, und durch Crossover und Mutation werden neue Generationen von Kombinationen erzeugt. Die Auswahl erfolgt aufgrund der Leistung der Modelle auf der Grundlage von Fitnessfunktionen.
+          \end{itemize}
     \item \textbf{Festlegen der Evaluierungsmetrik}: Diese Metrik wird genutzt, um die Leistung von der Tuning-Methode determinierte Iteration des Modells zu bewerten. Hierzu kann einer der vorher erwähnten Metriken genutzt werden.
     \item \textbf{Durchführen des Tuning-Verfahren}: Die ausgewählte Tuning-Methode kann nun getstartet werden. Das Training und die Evaluation sind meistens darin enthalten.
     \item \textbf{Manuelle Validierung und Test}: Um sicherzustellen, dass das Modell gut generalisert ist, sollte die durch die Tuning-Methode bestimmte Hyperparameter-Kombination mit einem seperaten Training und Validation Dataset überprüft werden.
@@ -228,9 +232,355 @@ Im Allgemeinem kann das Hyperparameter-Tuning in folgende Schritte untergliedert
 
 \section{Vorstellung von Machine Learning Ansätzen}
 
+\subsection{Design Pattern Detection mit Metriken als Input}
+
+Uchiyama et al. nutzen in ihrem Lösungsvorschlag nicht eine Repräsentation des Quellcodes als Eingabe für ihr Machine Learning Modell, sondern nutzen von dem Quellcode abgeleitete Metriken als Eingabe\cite{dodmetrics}.
+Dabei kann die von ihnen vorgeschlagene Prozess in folgende Schritte unterteilt werden:
+
+
+\subsubsection*{P1. Define Patterns}
+In diesem Prozess wurde auf die 23 GoF Design Patterns zurückgeriffen. Aus den drei Kategorien wurde sich für `Adapter'-, `Singelton'- `Template Method'-, `State'- und `Strategy'-Patterns als zu erkennende Design Patterns entschieden, sodass jede Kategorie von den GoF Patterns mindestens einen Vertreter hat. Rollen sind hier Mikrostrukturen, in Teil der Struktur der Design Patterns ist. Dieser Prozess berücksichtigt diese fünf Patterns und die 12 abgeleiteten Rollen\cite[p. 4]{dodmetrics}.
+
+\subsubsection*{P2. Decide Metrics}
+Um diese Metriken abzuleiten, wurde hier das Goal Questen Metric (GQM)-Methode angewendet. In der GQM werden Ziele als Goals definiert, die weiter in Fragen (Questions) aufgeteilt werden, sodass durch Beantwortung dieser Fragen bestimmt werden kann, ob das gesetzte Ziel erreicht wurde oder nicht. Für die Beantwortung dieser Fragen werden Metriken (Metrics) abgeleitet. Anhand dieser Methode für jedes zu identifizierende Design Pattern ein Set an Metriken definiert.
+Folgende Metriken wurden sind das Resultat:
+
+\begin{table}[h!]
+    \begin{tabular}{ |c|c| }
+        \hline
+        Abbreviation & Content                                        \\
+        \hline
+        NOF          & Number of fields                               \\
+        \hline
+        NSF          & Number of static fields                        \\
+        \hline
+        NOM          & Number of methods                              \\
+        \hline
+        NSM          & Number of static methods                       \\
+        \hline
+        NOI          & Number of interfaces                           \\
+        \hline
+        NOAM         & Number of abstract methods                     \\
+        \hline
+        NORM         & Number of overridden methods                   \\
+        \hline
+        NOPC         & Number of private constructors                 \\
+        \hline
+        NOOF         & Number of object fields                        \\
+        \hline
+        NCOF         & Number of other classes with field of own type \\
+        \hline
+        NMGI         & Number of methods generating instances         \\
+        \hline
+    \end{tabular}
+    \caption{Ausgewhählte Metriken}
+    \label{tabel:1}
+\end{table}
+
+
+\subsubsection*{P3. Maschine Learning}
+
+Als Machine Learning Modell wird in dieser Methodik ein neuronales Netz verwendet\cite[p. 5]{dodmetrics}. Dieser besteht aus einem Input-Layer, was die Metriken als Eingabe entgegegen nimmt, einem Output-Layer für die Ausgabe der Resultate und einer Anzahl von Hidden-Layern zwischen dem Input- und Output-Layer.
+Die Länge des Input-Layers entspricht der Länge Eingangsvektors. Diese ist bestimmt durch die Anzahl der zu verarbeitenden Metriken. Die Länge des Output-Layers entspricht der Anzahl der möglichen Rollen.
+Die Anzahl der Hidden-Layer entspricht der Länge des Input-Layers. Als Transferfunktion wird hier die sigmoid-Funktion verwendet.
+Um das Modell zu optimieren, wird bei neuronalen Netzwerke bekannte Back-Propagation verwendet, um die Anzahl an falschen Klasszifizerungen zu vermeiden.
+
+\subsubsection*{P4. Candidate Role Judgment}
+
+Der Quellcode wird durch die vorgestellten Metriken in Tabelle \ref*{tabel:1} qunatifiziert als Einabe in das Machine Learning Modell übergeben. Das Modell gibt für alle zu beurteilenden Rollen Werte zwischen 0 und 1 aus.
+Um die Ausgabewerte zu normalisieren und vergleichbar zu machen, werden sie skaliert, sodass ihre Summe 1 ergibt\cite[p. 5]{dodmetrics}. Diese Normalisierung ermöglicht die Verwendung eines gemeinsamen Schwellenwerts für den Vergleich. Die normalisierten Ausgabewerte werden als "Role Agreement Valle" bezeichnet, wobei ein höherer Wert auf eine höhere Wahrscheinlichkeit hinweist, dass die Rolle korrekt ist.
+Der Schwellenwert zur Bestimmung der Rollen wird als Kehrwert der Anzahl der zu erkennenden Rollen festgelegt. In diesem Fall beträgt der Schwellenwert 1/12 (d.h. 0,0834), da derzeit 12 Rollen berücksichtigt werden.
+
+\subsubsection*{P5. Pattern Detection}
+
+Das Machine Learning ist in der Lage, einzelne Rollen in den Design Patterns zu erkennen, jedoch ist nicht in der Lage, eine Aussage über Relation der Rollen zu tätigen. Um darüber Aussagen treffen zu können, wird ein eränzender Schritt eingeführt, in dem werden hierbei nacheinander alle Kombinationen von Rollen, die mit der Stutktur der Design Patterns übereinstimmen, und überprüft, ob die Beziehungsrichtungen zwischen den Rollen mit der Design Pattern Struktur übereinstimmen.
+Wenn die Beziehungsrichtungen und Rollen übereinstimmen, wird das Design Pattern erkannt. Derzeit behandelt diese Methode Vererbungs-, Schnittstellenimplementierungs- und Aggregationsbeziehungen. Um den Unterschied zwischen diesen Beziehungstypen zu verdeutlichen, wird der "Relation Agreement Value" eingeführt, der den Unterschied widerspiegelt. Der Relation Agreement Value ist 1,0, wenn der Typ und die Richtung der Zielbeziehung mit der Beziehung der Struktur des Deign Pattern übereinstimmen, und 0,5, wenn nur die Richtung übereinstimmt. Wenn die Richtung nicht übereinstimmt, wird der Relation Agreement Value zu 0.
+Der notwendigen Schritte zu Ermittelung diesen Wertes wird hier nicht weiter betrachtet.
+
+\subsubsection*{Evaluation}
+
+Das Verfahren wurde mit sowohl mit `kleinen' Applikationen (Mustercode aus Lehrbüchern) als auch mit `größeren' Applikation wie mit den Java-Frameworks JUnit, Spring Framework und der Java Standardbibliothek getestet.
+Aus den Testpool der kleinen Programme mit einem Umfang mit 60 Proben wurden 20 und bei den "größeren" Applikationen wurden von 158 möglichen Proben 126 zu der Evaluation verwendet.
+Dabei wurden die Recall und Precision Metriken zu Quatifizierung dieser Methode genutzt und folende Werte ermittelt:
+
+\begin{sidewaystable}
+    \centering
+    \caption{Precision und recall für Design Pattern Erkennug}
+    \label{table:2}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+                        & \multicolumn{2}{|c|}{Number of test data} & \multicolumn{2}{|c|}{Precision (\%)} & \multicolumn{2}{|c|}{Recall (\%)}                                           \\
+        \hline
+        Pattern         & Small-scale                               & Large-Scale                          & Small-scale                       & Large-Scale & Small-scale & Large-Scale \\
+        \hline
+        Singelton       & 6                                         & 6                                    & 60                                & 46          & 100         & 83          \\
+        \hline
+        Template Method & 6                                         & 7                                    & 86                                & 67          & 100         & 57          \\
+        \hline
+        Adapter         & 4                                         & 7                                    & 100                               & 100         & 75          & 57          \\
+        \hline
+        State           & 2                                         & 6                                    & 50                                & 50          & 100         & 85          \\
+        \hline
+        Strategy        & 2                                         & 6                                    & 67                                & 50          & 100         & 100         \\
+        \hline
+    \end{tabular}
+\end{sidewaystable}
+
+Wie aus Tabelle \ref{table:2} zu entnehmen ist, liefert diese Methode für `kleinere' als auch `größere' Applikation hohe Precision- und Recall-Werte, was für eine gute Klasszifierunskapazitäten der Methode spricht.
+
+Um die den Leistung dieses Ansatzes zu vergleichen, wurde diese mit anderen Methoden verglichen, die ebenfalls zur Erkennung von Design Patterns entwickelt.
+Dabei wurde die Methoden von Tsantalis et al.(TSAN) \cite{4015512}, die auf Similarity Scoring beruht, und Dietrich and Elgars (DIET)\cite{DIETRICH2007108} zum Vergleich hergezogen. Diese Verfahren nutzen beide Java-Quellcode als Basis für die Eingabe und können beide Design Patterns erkennen, die auch in dieser Methodik feststellbar sind.
+Alle Verfahren wurden mit den Eingabedaten getestetl, die von allen Verfahren erkennbar sind, und zum Vergleich wurde der F1-Score ermittelt:
+
+\begin{table}[h]
+    \centering
+    \caption{Durchschnittlicher F1-Score (gegen TSAN)}
+    \label{table:3}
+    \begin{tabular}{|c|c|c|}
+        \hline
+                      & Small-scale programs & Large-scale programs \\
+        \hline
+        Diese Methode & 0.67                 & 0.56                 \\
+        \hline
+        TSAN          & 0.39                 & 0.36                 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \caption{Durchschnittlicher F1-Score (gegen DIET)}
+    \label{table:4}
+    \begin{tabular}{|c|c|c|}
+        \hline
+                      & Small-scale programs & Large-scale programs \\
+        \hline
+        Diese Methode & 0.69                 & 0.55                 \\
+        \hline
+        DIET          & 0.50                 & 0.35                 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Wie ist aus den Tabellen \ref{table:3} und \ref{table:4} zu entnehmen ist, erzielt dieses Modell im Durchschnitt bessere F1-Scores, was im ganzen für eine bessere Leistung des hier vorgestellten Verfahrens spricht.
+
+\newpage
+
+\subsection{DPD \textsubscript{f}}
+
+In ihrer Arbeit stellen Nazar et al. \cite{NAZAR2022111179} eine auf Feature basierende Methode zur Erkennung von GoF Design Patterns mit Machine Learning, die neben der Struktur auch lexikale Features als Eingabe entgegen nimmt. Im weiteren Verlauf wird diese Methode als DPD \textsubscript{f} bezeichnet.
+Die Methode kann in folgende Schritte untergliedert werden:
+
+\subsubsection*{Data Collection}
+Anstatt ein existierendes Dataset wie P-MART zu nutzen, wurde dieses Dataset zum Benchmark genutzt und ein eigenes Dataset erstellt, das DPD\textsubscript{f}-Corpus benannt wurde.
+Dieses besteht aus Java-Quelldateien, die von dem Github Java Corpus stammen, und im weiteren Verlauf bereinigt wurden.
+Das Labeling wurde durch Crowd-Sourcing ermöglicht, indem das Werkzeug CodeLabeller genutzt wurde. Dabei wurde der DPD\textsubscript{f}-Corpus von Menschen mit Labeln versehen, die mindestens zwei Jahre Erfahrung in der Software-Entwicklung mit Java nachweisen.
+Dabei erhielt DPD\textsubscript{f}-Corpus folgenden Umfang:
+
+\begin{table}[h]
+    \caption{Anzahl der Quelldateien für jeweiliges Design Pattern}
+    \label{table:5}
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Design Pattern   & Anzahl \\
+        \hline
+        Abstract Factory & 100    \\
+        \hline
+        Adapter          & 100    \\
+        \hline
+        Builder          & 100    \\
+        \hline
+        Decorator        & 100    \\
+        \hline
+        Factory Method   & 100    \\
+        \hline
+        Façade           & 100    \\
+        \hline
+        Memento          & 100    \\
+        \hline
+        None             & 100    \\
+        \hline
+        Observer         & 100    \\
+        \hline
+        Prototype        & 100    \\
+        \hline
+        Proxy            & 100    \\
+        \hline
+        Singelton        & 100    \\
+        \hline
+        Visitor          & 100    \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection*{Feature Extraction}
+
+Nun wird aus dem DPD\textsubscript{f}-Corpus, die Features ermittelt, die im weiteren Verlauf als Eingabe für das Machine Learning Modell dienen. In DPD\textsubscript{f} wird hierbei zwischen zwei Kategorien von Feaatures unterschieden: Class-Level Features und Method-level Features.
+Die Class-level Features beschreiben die Java-Klasse selbst, währnd die Method-level die Methoden der jeweiligen Java-Klasse beschreiben.
+Für den weiteren Verlauf werden folgende Features aus den Quelldateien extrahiert:
+
+\begin{sidewaystable}
+    \centering
+    \caption{Liste aller Features für DPD\textsubscript{f}}
+    \label{table:6}
+    \begin{tabular}{|c|c|}
+        \hline
+        Feature              & Description                                                                          \\
+        \hline
+        ClassName            & Name of Java Class                                                                   \\
+        \hline
+        ClassModiﬁers        & Public, Protected, Private Keywords etc.                                             \\
+        \hline
+        ClassImplements      & A binary feature (0/1) if a class implements an interface                            \\
+        \hline
+        ClassExtends         & A binary feature (0/1) if a class extends another class                              \\
+        \hline
+        MethodName           & Method name in a class                                                               \\
+        \hline
+        MethodParam          & Method parameters (arguments)                                                        \\
+        \hline
+        MethodReturnType     & A method that returns something (void, int etc.) or a method having a return keyword \\
+        \hline
+        MethodBodyLineType   & Type of code in a method’s body e.g. assignment statement, condition statements etc. \\
+        \hline
+        MethodNumVariables   & Number of variables/attributes in a method                                           \\
+        \hline
+        MethodNumMethods     & Number of method calls in a class                                                    \\
+        \hline
+        MethodNumLine        & Number of lines in a method                                                          \\
+        \hline
+        MethodIncomingMethod & Number of methods a method calls.                                                    \\
+        \hline
+        MethodIncomingName   & Name of methods a method calls                                                       \\
+        \hline
+        MethodOutgoingMethod & Number of outgoing methods                                                           \\
+        \hline
+        MethodOutgoingName   & Name of outgoing methods                                                             \\
+        \hline
+    \end{tabular}
+\end{sidewaystable}
+
+\newpage
+
+\subsubsection*{Data Preporcessing}
+
+Für den weiteren Verlauf müssen aus den Daten in der Tabelle \ref{table:6} aufgelisteten Feature für die Quelldateien aus dem DPD\textsubscript{f}-Corpus extrahiert werden.
+Dazu wird zunächst der Static Call Graph (SSG) für den Quellcode gebildet, der als Graph kodiert angibt, welche Methoden und Funktionen sich aufrufen, um den Logikfluss zwischen Klassen und Methoden darzustellen.
+Dieser zeigt die Beziehungen zwischen den Klassen und den Methoden im Quellcode an. Anhand eines extra entwicklelten Werkzeugs wird aus dem Quellcode extrahiert und mit einem Feature Extractor, der Teil des Parsers ist, wird eine Software Syntactic and Lexical Representation (SSLR) erstellt.
+SSLRs enthalten die Features aus Tabelle \ref{table:5} in einer natürlich sprachlich verfassten Form.
+
+\subsubsection*{Model Building}
+
+Die im vorherigen Schritt generierten SSLRs werden vor der Einagabe in das Machine Learning in Word Embeddings durch Word2Vec transformiert. Dabei wird die natürliche Sprache des SSLRs durch diesen Algorithmus in einen Vektor mit diskreten Werten umgewandelt.
+Die Klassifizierung selbst wird durch ein Random Forest Klasszifierer genutzt, um den eigentlichen Klassifikation duruchzuführen. Random Forest Modelle ist ein sogenanntes Ensemble-Modell, die intern aus mehreren Decision Trees besteht, deren Ausgabe zu einem Resultat zusammengefasst wird. Decicision Trees verwenden angelernte Entscheidungsregeln, um der Eingabe mehrere Klassen zuzuordnen.
+Der Klasszifierer wird im weiteren Verlauf als DPD\textsubscript{f} Classifier bezeichnet.
+
+\subsubsection*{Evaluation}
+
+Um die Leistungsfähigkeit des DPD\textsubscript{f} Classifier zu quantifizieren wurden hier Precision, Recall und F1-Score als Metriken betrachtet. 
+Die Ergebnisse der Evaluation sind wie gefolgt ausgefallen:
+
+\begin{table}[h]
+    \caption{Precision-, Recall- und F1-Score-Werte für DPD\textsubscript{f} Classifier}
+    \label{table:7}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Design Pattern &  Precision (\%) & Recall (\%) & F1-Score (\%)\\
+        \hline
+        Abstract Factory & 93.27 & 92.08 & 92.46\\
+        \hline
+        Adapter & 71.56 & 66.55 & 68.41\\
+        \hline
+        Builder & 83.21 & 83.66 & 82.36\\
+        \hline
+        Decorator & 80.99 & 75 & 77.34\\
+        \hline
+        Façade & 68 & 76.27 & 71.06\\
+        \hline
+        Factory Method & 89 & 83.88 & 85.79\\
+        \hline
+        Memento & 89.66 & 86.44 & 87.45\\
+        \hline
+        Observer & 81.26 & 90 & 85.06\\
+        \hline
+        Prototype & 85.75 & 80.33 & 82.59\\
+        \hline
+        Proxy & 68.51 & 60.55 & 62.86\\
+        \hline
+        Singleton & 81.6 & 68.22 & 72.62\\
+        \hline
+        Visitor & 97.07 & 91.88 & 93.39\\
+        \hline
+        None & 70.44 & 75 & 71.91\\
+        \hline
+    \end{tabular}
+\end{table}
+
+Wie aus der Tabelle \ref{table:7} zu entnehmen ist, erkennt der DPD\textsubscript{f} Classifier im Durchschnitt mit einem Precision-Wert über 89 \% und einem Recall-Wert von 79 \% alle Label.
+Diese hohen Werte sprechen für die Leistungsfähigkeit des DPD\textsubscript{f}.
+
+Zum Leistungsvergleich wurden der DPD\textsubscript{f} mit den Ansätzeb von Thaller et al. \cite{8667978} (im Weiteren als FeatureMaps referenziert) und mit der Methode von Fontana et al. \cite{ARCELLIFONTANA20112334} (im Weiteren als MARPLE-DPD referenziert) verglichen.
+In FeatureMaps werden Feature Maps als Einagabe für einen Random Forest Classifier und einem Convolutional Neural Networks genutzt. Diese werden genutzt, um zu determinieren, ob Set an Klassen einem bestimmten Design Pattern zugeordnet werden können.
+Dabei werden Feature Maps als eine Art visuelles Diagramm verwendet, das auf den Quellcode angewendet wird. Es werden bestimmte Merkmale und Strukturen des Codes identifiziert und in der Feature Map dargestellt. Dies können beispielsweise Klassen, Methoden, Vererbungsbeziehungen oder Abhängigkeiten zwischen Komponenten sein.
+Bei MARPLE-DPD werden Basiselemente und Metriken aus dem Quellcode extrahiert und anschließend werden maschinelle Lernalgorithmen eingesetzt, um Muster und Zusammenhänge in den extrahierten Daten zu identifizieren.
+
+Da die Implementierung und der Corpus für das Training nicht öffentlich zuänglich sind, werden diese zum Vergleich hier anhand der Beschreibung in der jeweiligen Arbeit nachgebaut.
+Orgibal wurde FeatureMaps für das Identifizieren des `Decorator'- und das `Singelton'-Pattern konfiguiert, aber für den Vergleich wurden Feature Mas für alle hier genutzten Design Pattern erstellt.
+Als Benchmark werden sowohl das P-MART Dataset mit 290 Proben als auch das DPD\textsubscript{f} Corpus verwendet. Für jedes Design Pattern wurden mindestens 30 Proben aus P-Mart entnommen.
+Daher waren nicht genug Proben für die `Façade'-, `Memento'- und `Prototype'-Patterns in P-MART enthalten. 
+
+
+
+\begin{sidewaystable}
+    \caption{Recall-, Precision-, F1-Score für FeatureMaps, MARPLE-DPD und DPD\textsubscript{f}}
+    \label{table:8}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        Corpus & Design Pattern & \multicolumn{3}{|c|}{FeatureMaps} & \multicolumn{3}{|c|}{MARPLE-DPD} & \multicolumn{3}{|c|}{DPD\textsubscript{f}}\\
+        \hline
+        & & P (\%) & R (\%) & F1-S (\%) & P (\%) & R (\%) & F1-S (\%) & P (\%) & R (\%) & F1-S (\%)\\
+        \hline
+        \multirow{9}{*}{P-MART} & Abstract Factory & 48.8 & 52.3 & 50.49 & 73.33 & 71.15 & 72.22 & 78.33 & 78.33 & 78.33\\
+        & Adapter & 15 & 20 & 17.14 & 78.14 & 75.62 & 76.86 & 91.6 & 86.66 & 89.06\\
+        & Builder & 55 & 45 & 49.5 & 53.45 & 48.8 & 51.02 & 77.5 & 80 & 78.73\\
+        & Decorator & 13.22 & 12.8 & 13.01 & 54.18 & 66 & 59.51 & 60 & 36.66 & 45.51\\
+        & Factory Method & 50.23 & 40.35 & 44.75 & 78.23 & 80.1 & 79.15 & 56.67 & 63.33 & 59.82\\
+        & Observer & 46.12 & 44.12 & 45.1 & 57.21 & 55.23 & 56.20 & 67.5 & 76.66 & 71.79\\
+        & Singleton & 63 & 59 & 60.93 & 74.23 & 70.18 & 72.15 & 43.33 & 40.00 & 41.6\\
+        & Visitor & 30.3 & 35.3 & 32.61 & 45.74 & 50.25 & 47.89 & 96 & 93.3 & 94.63\\
+        & None & 57.23 & 70.02 & 62.98 & 51.3 & 51.67 & 51.48 & 78.5 & 82.64 & 80.52\\
+        \cline{2-11}
+        & Average & 42.1 & 42.1 & 41.83 & 62.87 & 63.22 & 63.04 & 72.16 & 70.84 & 71.49\\
+        \hline
+        \multirow{9}{*}{DPD\textsubscript{f} Corpus} & Abstract Factory & 55.5 & 49.5 & 52.33 & 75.5 & 77 & 76.24 & 93.27 & 92.08 & 92.67\\
+        & Adapter & 35 & 31.5 & 33.16 & 85.16 & 78.25 & 81.56 & 71.56 & 66.55 & 68.96\\
+        & Builder & 62.2 & 60.1 & 61.13 & 58.52 & 51.23 & 54.63 & 83.21 & 83.66 & 83.43\\
+        & Decorator & 21.28 & 24.5 & 22.78 & 60.15 & 58.23 & 59.17 & 80.99 & 75 & 77.88\\
+        & Factory Method & 61.3 & 50.45 & 55.35 & 82.15 & 80.8 & 81.47 & 73.58 & 81.88 & 77.51\\
+        & Observer & 50.1 & 47.65 & 48.84 & 53.25 & 48.26 & 50.63 & 81.26 & 90 & 85.41\\
+        & Singleton & 65 & 67 & 65.98 & 74.24 & 69.23 & 71.65 & 81.6 & 68.22 & 74.31\\
+        & Visitor & 55.1 & 80.1 & 65.29 & 60.1 & 66.25 & 63.03 & 97.07 & 91.88 & 93.93\\
+        & None & 65.25 & 79 & 71.47 & 51.3 & 56.24 & 53.67 & 70.44 & 75 & 72.65\\
+        \cline{2-11}
+        & Average & 52.30 & 54.42 & 52.93 & 66.71 & 65.05 & 65.87 & 81.44 & 80.47 & 80.75\\
+        \hline
+
+    \end{tabular}
+\end{sidewaystable}
+
+\newpage
+
+Wie aus der Tabelle \ref{table:8} zu entnehmen ist, FeatureMapps hat im Durchschnitt die geringsten Werte für beide Corpi, während mit einer durchschnittlichen Precision-Wert von 62 \% in P-MART und einen von 66.71 \% in DPD\textsubscript{f} Corpus.
+DPD\textsubscript{f} schnitt am besten mit einer Precision-Wert von 72.16 in P-MART und von 81.44 \% in DPD\textsubscript{f} Corpus ab.
+
 \newpage
 
 \section{Zukünftiger Ausblick}
+
+Über die letzten Jahre wurde Machine Learning immer mehr für die Erkennung von Design Patterns angewendet. Jedoch erfordern diese einen hohen Aufwand im Data Gathering und im Data Preprocessing.
+Aud diesem Grund wäre die Betrachtung interessant, wie Large Language Modelle wie GPT in der Erkennug von Design Patterns eingesetzt werden kann. Da diese Modelle mit natürlcihe Sprache als Eingabe arbeiten und mit einem relativ großen Dataset aus vielen Quellen im Internet trainiert wurde,
+wäre es interessant zu untersuchen, welche Resultate Large Language Modelle ohne Präparierung der Eingabe liefern.
 
 \newpage
 
