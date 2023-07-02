@@ -51,7 +51,7 @@ Im Rahmen dieser Problematik setzt sich diese Seminararbeit die Untersuchung der
 
 \section{Eingrenzungen der Seminararbeit}
 Um mit der Erkennung der Design Patterns anzufangen, muss vorerst definiert werden, welche Design Patterns überhaupt zu betrachten sind. Da der Fokus dieser Seminararbeit auf der Analyse von Quellcode liegt, werden hier deren Einsatz in Programmiersprachen betrachtet.
-Das Werk, womit der Begriff der Design Patterns in den Köpfen den Software-Entwicklern am ehesten assoziieren, sind die Konstrukte, die im Werk "Design Patterns: Elements of Reuseable Software" definiert \cite{gamma1994design} sind. Diese Design Patterns sind ebenfalls unter dem Begriff `GoF Design Patterns' bekannt. Da der Fokus in diesem Werk den Einsatz von Design Patterns in einem
+Das Werk, womit der Begriff der Design Patterns in den Köpfen den Software-Entwicklern am ehesten assoziieren, sind die Konstrukte, die im Werk `Design Patterns: Elements of Reuseable Software' definiert \cite{gamma1994design} sind. Diese Design Patterns sind ebenfalls unter dem Begriff `GoF Design Patterns' bekannt. Da der Fokus in diesem Werk den Einsatz von Design Patterns in einem
 objektorientierten Kontext betrachtet werden, wird diese auch so im weiteren Verlauf der Untersuchung übernommen. Obwohl die Erläuterungen der GoF Design Patterns ursprünglich in der Programmiersprache C++ verfasst wurden, wird in dieser Arbeit deren Einsatz ebenfalls in der objektorientierten Programmiersprachen Java betrachtet.
 Dabei werden die Design Pattern in folgende Kategorien unterteilt werden \cite[p. 5797]{Yarahmadi2020}
 
@@ -97,7 +97,7 @@ ASTs werden bei dem Compile-Vorgang verwendet, um die Struktur des jeweiligen Qu
 bieten zusätzlich die Möglichkeit an, durch Einsatz von Attributen zusätzliche Metainformationen an die Knoten mitzugeben. Diese Strukturen ermöglichen das Traversieren der jeweiligen Struktur durch Angabe von der zu begehenden Pfade in Form von Anfragen.
 Den gesuchten Design Patterns werden in Form dieser Anfragen abgelegt und durch an der jeweiligen Baumstruktur durchgeführt.
 Bouassida und Ben-Abdallah stellen einen Prozess wie mithilfe von Information-Retrieval-Techniken, Artefakte des Quellcodes wie Klassen, Methoden oder Beziehungen zwischen Entitäten als XML-Dokument zu repräsentieren \cite{bouassida2010pattern}.
-Mit Anfragen können nun in diesem nach Design Patterns oder nach "spoiled patterns", abgewandelten Design Patterns, gesucht werden.
+Mit Anfragen können nun in diesem nach Design Patterns oder nach `spoiled patterns', abgewandelten Design Patterns, gesucht werden.
 
 
 \newpage
@@ -200,7 +200,7 @@ Um diese Abweichung zu quantifizieren, können folgende Auswahl an Metriken verw
           Ein hoher Präzisionswert zeigt an, dass das Modell in der Lage ist, die relevanten Muster genau zu erkennen. Ein hoher Recall zeigt an, dass das Modell in der Lage ist, die meisten tatsächlich positiven Instanzen zu erfassen.
     \item \textbf{F1-Score}: Der F1-Score ist eine kombinierte Metrik, die Präzision und Recall berücksichtigt. Er gibt das harmonische Mittel zwischen Präzision und Recall an \cite{scikit_f1}. Ein hoher F1-Score zeigt an, dass das Modell sowohl eine hohe Präzision als auch einen hohen Recall aufweist.
     \item \textbf{Confusion Matrix}: Die Konfusionsmatrix ist eine Tabelle, die die Anzahl der richtigen und falschen Vorhersagen für jede Klasse darstellt \cite{scikit_conf}. Sie gibt detaillierte Informationen über die Leistung des Modells für jede Klasse und ermöglicht das Berechnen von verschiedenen Metriken wie Genauigkeit, Präzision und Recall für jede Klasse.
-    \item \textbf{ROC-Curve \& AUC}: Die ROC-Curve (Receiver Operating Characteristic) und der AUC-Wert (Area Under the Curve) sind Metriken, die die Leistung eines Modells bei der Klassifikation von Daten über verschiedene Schwellenwerte hinweg bewerten \cite{scikit_roc}. Sie sind insbesondere relevant, wenn die Trade-offs zwischen True Positive Rate (TPF; auch Recall gennant) und False Positive Rate (FPR) betrachtet werden sollen.
+    \item \textbf{ROC-Curve \& AUC}: Die ROC-Curve (Receiver Operating Characteristic) und der AUC-Wert (Area Under the Curve) sind Metriken, die die Leistung eines Modells bei der Klassifikation von Daten über verschiedene Schwellenwerte hinweg bewerten \cite{scikit_roc}. Sie sind insbesondere relevant, wenn die Trade-offs zwischen True Positive Rate (TPF; auch Recall genannt) und False Positive Rate (FPR) betrachtet werden sollen.
           Eine perfekte Klassifikation würde zu einer ROC-Curve führen, die den Punkt (0,1) erreicht, was bedeutet, dass die TPR 100 \% und die FPR 0 \% beträgt. Ein zufälliges Klassifikationsmodell würde eine ROC-Curve erzeugen, die der diagonalen Linie entspricht. Der AUC-Wert gibt den Bereich unter der ROC-Curve an und dient als Zusammenfassung der gesamten Leistung des Modells. Ein AUC-Wert von 1 bedeutet, dass das Modell eine perfekte Trennung zwischen den Klassen erreicht, während ein AUC-Wert von 0.5 darauf hinweist, dass das Modell nicht besser ist als eine zufällige Klassifikation.
 \end{itemize}
 
@@ -230,7 +230,7 @@ Im Allgemeinem kann das Hyperparameter-Tuning in folgende Schritte untergliedert
 
 \subsection{Design Pattern Detection mit Metriken als Input}
 
-Uchiyama et al. nutzen in ihrem Lösungsvorschlag nicht eine Repräsentation des Quellcodes als Eingabe für ihr Machine Learning Modell, sondern nutzen von dem Quellcode abgeleitete Metriken als Eingabe\cite{dodmetrics}.
+Uchiyama et al. nutzen in ihrem Lösungsvorschlag nicht eine Repräsentation des Quellcodes als Eingabe für ihr Machine Learning Modell, sondern nutzen von dem Quellcode abgeleitete Metriken als Eingabe \cite{dodmetrics}.
 Dabei kann die von ihnen vorgeschlagene Prozess in folgende Schritte unterteilt werden:
 
 
@@ -279,24 +279,25 @@ Folgende Metriken sind das Resultat \cite[p. 7]{dodmetrics}:
 Als Machine Learning Modell wird in dieser Methodik ein neuronales Netz verwendet \cite[p. 5]{dodmetrics}. Dieser besteht aus einem Input-Layer, was die Metriken als Eingabe entgegennimmt, einem Output-Layer für die Ausgabe der Resultate und einer Anzahl von Hidden-Layern zwischen dem Input- und Output-Layer.
 Die Länge des Input-Layers entspricht der Länge Eingangsvektors. Diese ist bestimmt durch die Anzahl der zu verarbeitenden Metriken. Die Länge des Output-Layers entspricht der Anzahl der möglichen Rollen.
 Die Anzahl der Hidden-Layer entspricht der Länge des Input-Layers. Als Transferfunktion wird hier die Sigmoid-Funktion verwendet.
-Um das Modell zu optimieren, wird bei neuronalen Netzwerke bekannte Back-Propagation verwendet, um die Anzahl an falschen Klassifizierungen zu vermeiden.
+Um das Modell zu optimieren, wird bei neuronalen Netzwerke bekannte Back-Propagation verwendet.
 
 \subsubsection*{P4. Candidate Role Judgment}
 
-Der Quellcode wird durch die vorgestellten Metriken in Tabelle \ref*{tabel:1} quantifiziert und als Eingabe in das Machine Learning Modell übergeben. Das Modell weist als Ergebnis der Klassifizierung für alle zu beurteilenden Rollen Werte zwischen 0 und 1 zu. Je größer dieser Wert, desto wahrscheinlicher die korrekte Rollenzuweisung.
-Um die Ausgabewerte zu normalisieren und vergleichbar zu machen, werden sie skaliert, sodass ihre Summe 1 ergibt \cite[p. 5]{dodmetrics}. Diese Normalisierung ermöglicht die Verwendung eines gemeinsamen Schwellenwerts für den Vergleich. Die normalisierten Ausgabewerte werden als "Role Agreement Valle" bezeichnet, wobei ein höherer Wert auf eine höhere Wahrscheinlichkeit hinweist, dass die Rolle korrekt ist.
+Der Quellcode wird durch die vorgestellten Metriken in Tabelle \ref*{tabel:1} quantifiziert und als Eingabe in das Machine Learning Modell übergeben. Das Modell weist als Ergebnis der Klassifizierung für alle der zu beurteilenden Rollen Werte zwischen 0 und 1 zu. Je größer dieser Wert, desto wahrscheinlicher die korrekte Rollenzuweisung.
+Um die Ausgabewerte zu normalisieren und vergleichbar zu machen, werden sie skaliert, sodass ihre Summe insgesamt 1 ergibt \cite[p. 5]{dodmetrics}. Diese Normalisierung ermöglicht die Verwendung eines gemeinsamen Schwellenwerts für den Vergleich. Die normalisierten Ausgabewerte werden als `Role Agreement Value' bezeichnet, wobei ein höherer Wert auf eine höhere Wahrscheinlichkeit hinweist, dass die Rolle korrekt ist.
 Der Schwellenwert zur Bestimmung der Rollen wird als Kehrwert der Anzahl der zu erkennenden Rollen festgelegt. In diesem Fall beträgt der Schwellenwert 1/12 (d.h. 0.0834), da derzeit 12 Rollen berücksichtigt werden.
 
 \subsubsection*{P5. Pattern Detection}
 
-Das Machine Learning ist in der Lage, einzelne Rollen in den Design Patterns zu erkennen, jedoch ist nicht in der Lage, eine Aussage über Relation der Rollen zu tätigen. Um darüber Aussagen treffen zu können, wird ein ergänzender Schritt eingeführt. In diesem werden nacheinander alle Kombinationen von Rollen, die mit der Struktur der Design Patterns übereinstimmen, betrachtet und überprüft, ob die Beziehungsrichtungen zwischen den Rollen mit der Design Pattern Struktur übereinstimmen.
-Wenn die Beziehungsrichtungen und Rollen übereinstimmen, wird das Design Pattern erkannt. Derzeit behandelt diese Methode Vererbungs-, Schnittstellenimplementierungs- und Aggregationsbeziehungen. Um den Unterschied zwischen diesen Beziehungstypen zu verdeutlichen, wird der "Relation Agreement Value" eingeführt \cite[p. 6]{dodmetrics}, der diesen quantifiziert widerspiegelt. Der Relation Agreement Value ist 1.0, wenn der Typ und die Richtung der Zielbeziehung mit der Beziehung der Struktur des Design Pattern übereinstimmen, und 0.5, wenn nur die Richtung übereinstimmt. Wenn die Richtung nicht übereinstimmt, wird der Relation Agreement Value zu 0.
-Der notwendigen Schritte zu Ermittelung dieses Wertes wird hier nicht weiter betrachtet.
+Das Machine Learning ist in der Lage, einzelne Rollen in den Design Patterns zu erkennen, jedoch ist nicht in der Lage, eine Aussage über Relation der Rollen zu tätigen. Um darüber Aussagen treffen zu können, wird ein ergänzender Schritt eingeführt. 
+In diesem wird überprüft, welche Kombination an Beziehungen zwischen den identifizierten Rollen für die jeweilige Design Pattern Struktur passen. Dabei wird die Art der Beziehung (Vererbungs-, Schnittstellenimplementierungs- und Aggregationsbeziehung) und die Richtung dieser betrachtet. Nur die die Rollen, die den Schwellenwert von 0.0834 überschreiten, werden hier berücksichtigt.
+Dies wird als `Relation Argreement Value' betrachtet und beträgt 1.0, falls Richtung und Art der Beziehung stimmt, 0.5 falls nur die Richtung übereinstimmt \cite[p. 6]{dodmetrics}. Im Falle einer nicht passenden Richtung beträgt dieser 0. Zusammend mit der `Role Agreement Value' wird die `Relation Agreeement Value' verwendet, im die `Pattern Agreement Value' zu berechnen. Dieser Wert gibt von 0 bis 1 an, ob die Beziehungen und die Rollen für das betrachtete Design Pattern fassen.
+Je größer der Wert, desto wahrscheinlicher ist eine korrekte Erkennung. 
 
 \subsubsection*{Evaluation}
 
 Das Verfahren wurde mit sowohl mit `kleinen' Applikationen (Mustercode aus Lehrbüchern) als auch mit `größeren' Applikation wie mit den Java-Frameworks JUnit, Spring Framework und der Java Standardbibliothek getestet \cite[p. 7]{dodmetrics}.
-Aus den Testpool der kleinen Programme mit einem Umfang mit 60 Proben wurden 20 und bei den "größeren" Applikationen wurden von 158 möglichen Proben 126 zu der Evaluation verwendet.
+Aus den Testpool der kleinen Programme mit einem Umfang mit 60 Proben wurden 20 und bei den `größeren' Applikationen wurden von 158 möglichen Proben 126 zu der Evaluation verwendet.
 Dabei wurden die Recall und Precision Metriken zu Qualifizierung dieser Methode genutzt und folgende Werte ermittelt \cite[p. 8]{dodmetrics}:
 
 \begin{sidewaystable}
@@ -322,10 +323,10 @@ Dabei wurden die Recall und Precision Metriken zu Qualifizierung dieser Methode 
     \end{tabular}
 \end{sidewaystable}
 
-Wie aus Tabelle \ref{table:2} zu entnehmen ist, liefert diese Methode für `kleinere' als auch `größere' Applikation hohe Precision- und Recall-Werte, was für eine gute Klasszifierungkapazität der Methode spricht.
+Wie aus Tabelle \ref{table:2} zu entnehmen ist, liefert diese Methode für `kleinere' als auch `größere' Applikation hohe Precision- und Recall-Werte, was für eine gute Klassifizierungskapazität der Methode spricht.
 
 Um die Leistung dieses Ansatzes zu vergleichen, wurde diese mit anderen Methoden verglichen, die ebenfalls zur Erkennung von Design Patterns entwickelt wurden.
-Dabei wurde die Methoden von Tsantalis et al.(TSAN) \cite{4015512}, die auf Similarity Scoring beruht, und Dietrich and Elgars (DIET)\cite{DIETRICH2007108} zum Vergleich hergezogen. Diese Verfahren nutzen beide Java-Quellcode als Basis für die Eingabe und können Design Patterns erkennen, die auch in dieser Methodik feststellbar sind.
+Dabei wurde die Methoden von Tsantalis et al.(TSAN) \cite{4015512}, die auf Similarity Scoring beruht, und von Dietrich und Elgars (DIET)\cite{DIETRICH2007108} zum Vergleich hergezogen. Diese Verfahren nutzen beide Java-Quellcode als Basis für die Eingabe und können Design Patterns erkennen, die auch in dieser Methodik feststellbar sind.
 Das hier vorgestellte Verfahren wurden mit den Design Patterns getestet, die zum Vergleich hergezogenen Verfahren erkennbar sind. Zum Vergleich wurde der F1-Score ermittelt \cite[p. 9]{dodmetrics}:
 
 \begin{table}[h]
@@ -573,7 +574,7 @@ DPD\textsubscript{F} schnitt am besten mit einem Precision-Wert von 72.16 in P-M
 \section{Zukünftiger Ausblick}
 
 Über die letzten Jahre wurde Machine Learning immer mehr für die Erkennung von Design Patterns angewendet. Jedoch erfordern diese einen hohen Aufwand im Data Gathering und im Data Preprocessing.
-Aud diesem Grund wäre die Betrachtung interessant, wie Large Language Modelle wie GPT in der Erkennung von Design Patterns eingesetzt werden kann. Da diese Modelle mit natürliche Sprache als Eingabe arbeiten und mit einem relativ großen Dataset aus vielen Quellen im Internet trainiert wurde,
+Aud diesem Grund wäre die Betrachtung interessant, wie Large Language Modelle wie GPT in der Erkennung von Design Patterns eingesetzt werden kann. Da diese Modelle mit natürlicher Sprache als Eingabe arbeiten und mit einem relativ großen Dataset aus vielen Quellen im Internet trainiert wurde,
 wäre es interessant zu untersuchen, welche Resultate Large Language Modelle ohne Präparierung der Eingabe liefern.
 
 \newpage
