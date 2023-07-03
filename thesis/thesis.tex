@@ -518,9 +518,9 @@ Wie aus der Tabelle \ref{table:7} zu entnehmen ist, erkennt der DPD\textsubscrip
 Diese hohen Werte sprechen für die Leistungsfähigkeit des DPD\textsubscript{F}.
 
 Zum Leistungsvergleich wurde der DPD\textsubscript{F} mit den Ansätzen von Thaller et al. \cite{8667978} (im Weiteren als FeatureMaps referenziert) und mit der Methode von Fontana et al. \cite{ARCELLIFONTANA20112334} (im Weiteren als MARPLE-DPD referenziert) verglichen.
-In FeatureMaps werden Feature Maps als Eingabe für einen Random Forest Klasszifierer und einem Convolutional Neural Networks genutzt. Diese werden genutzt, um zu determinieren, ob Set an Java-Klassen einem bestimmten Design Pattern zugeordnet werden können.
+In FeatureMaps werden Feature Maps als Eingabe für einen Random Forest Klasszifierer und Convolutional Neural Networks genutzt. Diese werden genutzt, um zu determinieren, ob ein Set an Java-Klassen einem bestimmten Design Pattern zugeordnet werden können.
 Dabei werden diese Klassen in Feature Maps transformiert. Diese werden als eine Art visuelles Diagramm verwendet, das auf den Quellcode angewendet wird. Es werden bestimmte Merkmale und Strukturen des Codes wie Klassen, Methoden, Vererbungsbeziehungen oder Abhängigkeiten zwischen Komponenten identifiziert und in der Feature Map dargestellt.
-Bei MARPLE-DPD werden Basiselemente und Metriken aus dem Quellcode extrahiert und anschließend werden maschinelle Lernalgorithmen eingesetzt, um Muster und Zusammenhänge in den extrahierten Daten zu identifizieren. Zum Vergleich wird nur der in FeatureMaps vorgstellte Random Forest Klasszifierer genutzt,
+Bei MARPLE-DPD werden Basiselemente und Metriken aus dem Quellcode extrahiert und anschließend werden maschinelle Lernalgorithmen eingesetzt, um Muster und Zusammenhänge in den extrahierten Daten zu identifizieren. Zum Vergleich wird nur der in FeatureMaps vorgstellte Random Forest Klasszifierer genutzt.
 
 Da die Implementierung der Modelle nicht öffentlich zugänglich sind, werden diese zum Vergleich hier anhand der Beschreibung in der jeweiligen Arbeit nachgebaut. \cite[p. 10]{NAZAR2022111179}
 Ursprünglich wurde FeatureMaps für das Identifizieren des `Decorator'- und das `Singelton'-Pattern konfiguriert, aber für den Vergleich wurden Feature Maps für alle hier genutzten Design Pattern erstellt.
